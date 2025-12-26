@@ -1,5 +1,1 @@
-# Rewrite rules for Render static site hosting
-# This file handles SPA client-side routing
-
-# Catch-all rewrite - serve index.html for all paths
-/* /index.html 200
+/*    /index.html   200

@@ -1,44 +1,116 @@
-/* Hacker Button - Pure CSS hover (no flicker) */
+/* God Mode Hacker Buttons - Clean Wireframe Version */
 .hacker-btn {
   background-color: var(--color-bg);
   border: 1px solid var(--color-primary);
   color: var(--color-primary);
-  transition: all 0.3s ease-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glowing border effect - Reduced blur for sharpness */
+.hacker-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg,
+      transparent,
+      var(--color-primary),
+      transparent);
+  background-size: 200% 100%;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  /* Removed heavy blur */
+}
+
+/* Ripple effect overlay */
+.hacker-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.5s ease, opacity 0.3s ease;
 }
 
 .hacker-btn:hover {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-  box-shadow: 0 0 25px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  color: var(--color-primary);
+  /* Removed box-shadow and text-shadow for flat look */
+  animation: buttonGlitch 0.3s ease-in-out;
+}
+
+.hacker-btn:hover::before {
+  opacity: 0.5;
+  animation: borderGradientRotate 2s linear infinite;
 }
 
 .hacker-btn:active {
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
-/* Corner decorations */
+.hacker-btn:active::after {
+  opacity: 0.3;
+  transform: scale(2);
+}
+
+/* Enhanced corner decorations */
 .hacker-btn-corner {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-color: var(--color-primary);
-  transition: border-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
 }
 
 .hacker-btn:hover .hacker-btn-corner {
-  border-color: var(--color-bg);
+  width: 14px;
+  height: 14px;
+  opacity: 1;
+  /* Removed box-shadow */
 }
 
-/* Arrow animation */
+/* Arrow animation with bounce */
 .hacker-btn-arrow {
   opacity: 0;
-  transform: translateX(-4px);
-  transition: all 0.3s ease;
+  transform: translateX(-8px);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .hacker-btn:hover .hacker-btn-arrow {
   opacity: 1;
   transform: translateX(0);
   margin-right: 8px;
+  animation: arrowBounce 0.6s ease infinite;
+}
+
+@keyframes arrowBounce {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+/* Scanline effect on hover */
+.hacker-btn:hover::before {
+  animation: buttonScanline 1.5s linear infinite;
+}
+
+@keyframes buttonScanline {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
