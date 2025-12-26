@@ -36,6 +36,7 @@ api.interceptors.response.use(
     // Backend responded successfully
     if (backendStatus !== 'ready') {
       setBackendStatus('ready');
+      console.log('%c✓ Backend Connected Successfully', 'color: #00ff00; font-weight: bold; font-size: 14px;');
     }
     return response;
   },
@@ -46,6 +47,7 @@ api.interceptors.response.use(
     const shouldRetry = !error.response || (error.response.status >= 500 && error.response.status < 600);
 
     if (!shouldRetry) {
+      console.log('%c✗ Backend Request Failed', 'color: #ff6b6b; font-weight: bold;', error.response?.status, error.message);
       return Promise.reject(error);
     }
 
@@ -55,6 +57,7 @@ api.interceptors.response.use(
 
     if (config.__retryCount >= maxRetries) {
       setBackendStatus('error');
+      console.log('%c✗ Backend Not Connected - Max retries reached', 'color: #ff0000; font-weight: bold; font-size: 14px;');
       return Promise.reject(error);
     }
 
@@ -63,6 +66,7 @@ api.interceptors.response.use(
     // Set status to waking on first retry
     if (config.__retryCount === 1 && backendStatus !== 'waking') {
       setBackendStatus('waking');
+      console.log('%c⟳ Backend Waking Up...', 'color: #ffaa00; font-weight: bold; font-size: 14px;');
     }
 
     // Exponential backoff: 1s, 2s, 4s, 8s, 8s, 8s, 8s, 8s (max 8s)
