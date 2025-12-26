@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Srinivasan M | Full Stack Developer</title>
+  <meta name="description"
+    content="Portfolio of Srinivasan M, a Full Stack Developer specializing in MERN stack, accessible design, and performant web applications." />
+  <meta name="keywords" content="Full Stack Developer, MERN Stack, React, Node.js, Web Development, Portfolio" />
+  <meta property="og:title" content="Srinivasan M | Full Stack Developer" />
+  <meta property="og:description"
+    content="Portfolio of Srinivasan M, a Full Stack Developer specializing in MERN stack, accessible design, and performant web applications." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourparam.com" />
+  <meta property="og:image" content="/preview-image.png" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Theme Flash Prevention - Load theme BEFORE React -->
+  <script>
+    (function () {
+      // Theme definitions (must match ThemeContext.jsx)
+      const themes = {
+        matrix: { bg: '#000000', primary: '#22c55e', secondary: '#06b6d4' },
+        cyberpunk: { bg: '#0a0a1a', primary: '#3b82f6', secondary: '#ec4899' },
+        amber: { bg: '#0d0d0d', primary: '#f59e0b', secondary: '#eab308' },
+        light: { bg: '#f5f5f5', primary: '#16a34a', secondary: '#16a34a' },
+        purple: { bg: '#0f0720', primary: '#a855f7', secondary: '#ec4899' }
+      };
+
+      // Get saved theme or default to light
+      const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+      const theme = themes[savedTheme] || themes.light;
+
+      // Set CSS variables immediately
+      const root = document.documentElement;
+      root.style.setProperty('--color-bg', theme.bg);
+      root.style.setProperty('--color-primary', theme.primary);
+      root.style.setProperty('--color-secondary', theme.secondary);
+
+      // Set body background immediately
+      document.write('<style>html,body{background-color:' + theme.bg + ';}</style>');
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/index-BrnY3VwF.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-fFzXIy1S.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
