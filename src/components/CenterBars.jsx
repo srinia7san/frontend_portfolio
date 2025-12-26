@@ -9,7 +9,7 @@ const CenterBars = () => {
     const ButtonContent = (
       <button
         onClick={onClick}
-        className="hacker-btn group m-2 relative px-4 py-3 sm:px-6 sm:py-3.5 font-mono text-sm sm:text-lg font-bold tracking-widest uppercase"
+        className="hacker-btn group m-2 relative px-6 py-3 font-mono text-sm sm:text-lg font-bold tracking-widest uppercase"
       >
         {/* Corner Decorations */}
         <span className="hacker-btn-corner top-0 left-0 border-t-2 border-l-2"></span>
