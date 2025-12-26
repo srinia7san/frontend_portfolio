@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound.jsx";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { ThemeProvider } from "./context/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher";
-import BackendWakeUp from "./components/BackendWakeUp";
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('adminToken');
@@ -23,30 +22,28 @@ const ProtectedRoute = ({ children }) => {
 const App = () => {
   return (
     <ThemeProvider>
-      <BackendWakeUp>
-        <BrowserRouter>
-          {/* Global Theme Switcher - appears on all pages */}
-          <ThemeSwitcher />
+      <BrowserRouter>
+        {/* Global Theme Switcher - appears on all pages */}
+        <ThemeSwitcher />
 
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/contact" element={<Contact />}></Route>
-            <Route path="/skills" element={<Skill />}></Route>
-            <Route path="/projects" element={<Projects />}></Route>
-            <Route path="/resume" element={<Resume />}></Route>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/skills" element={<Skill />}></Route>
+          <Route path="/projects" element={<Projects />}></Route>
+          <Route path="/resume" element={<Resume />}></Route>
 
-            <Route path="/login" element={<AdminLogin />}></Route>
-            <Route path="/admin" element={
-              <ProtectedRoute>
-                <AdminPanel />
-              </ProtectedRoute>
-            }></Route>
+          <Route path="/login" element={<AdminLogin />}></Route>
+          <Route path="/admin" element={
+            <ProtectedRoute>
+              <AdminPanel />
+            </ProtectedRoute>
+          }></Route>
 
-            <Route path="*" element={<NotFound />}></Route>
-          </Routes>
-        </BrowserRouter>
-      </BackendWakeUp>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
