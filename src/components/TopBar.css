@@ -1,0 +1,16 @@
+.decrypt-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.decrypt-ghost {
+  visibility: hidden;
+  white-space: pre;
+}
+
+.decrypt-animated {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: pre;
+}
